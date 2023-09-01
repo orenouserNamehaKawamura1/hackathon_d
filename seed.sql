@@ -16,3 +16,10 @@ CREATE TABLE images (
     created_at DATE
 );
 
+CREATE TABLE admin (
+    id SERIAL PRIMARY KEY,
+    mail VARCHAR(255) UNIQUE,
+    pass VARCHAR(255),
+    salt VARCHAR(255),
+    updated_at TIMESTAMP
+);
