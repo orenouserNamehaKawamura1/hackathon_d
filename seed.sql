@@ -8,3 +8,11 @@ CREATE TABLE users (
     updated_at TIMESTAMP
 );
 
+CREATE TABLE images (
+    id SERIAL PRIMARY KEY,
+    img_path TEXT UNIQUE,
+    user_id INTEGER REFERENCES users(id),
+    delete_flag BOOLEAN DEFAULT false,
+    created_at DATE
+);
+
