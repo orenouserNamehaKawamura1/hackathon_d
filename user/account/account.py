@@ -1,6 +1,8 @@
 from flask import Blueprint, render_template,request, redirect, url_for, session
 from db.account_db import inset_ad_user
 from datetime import timedelta
+# from .token_generator import generate_token
+# from.mail import send_mail
 
 user_bp = Blueprint('user', __name__, url_prefix='/user',
                       template_folder='templates',
@@ -17,13 +19,11 @@ def result():
 
 @user_bp.route('/register_exe', methods=['POST'])
 def register_account():
-    mail = request.form.get('mail')
-    pas = request.form.get('pas')
-    
-    count = inset_ad_user(mail,pas)
-    if count == 1:
-        #   mail.mail(user,mailad,type,pas)
-          return redirect(url_for('user.result'))
-    else:
-         return redirect(url_for('user.result'))
+     mail = request.form.get('mail')
+     pas = request.form.get('pas')
+     # token = generate_token()
+     count = inset_ad_user(mail,pas)
+     # mail(mail,token)
+     return redirect(url_for('user.result'))
+   
     
