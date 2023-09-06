@@ -1,4 +1,5 @@
 @charset "utf-8";
+
 @font-face{
   font-family: 'Aamonoline';
   src: url(../font/Aamonoline.ttf);
@@ -7,6 +8,7 @@
 body {
   padding: 0;
   margin: 0;
+  /* background-image: radial-gradient(circle, rgba(225, 225, 225, 1) 40%, rgba(216, 216, 216, 1) 50%, rgba(206, 206, 206, 1) 70%, rgba(197, 197, 197, 1) 80%); */
 }
 
 h1{
@@ -25,7 +27,8 @@ h1{
   right: -120%;
   width:30%;
   height: 100vh;/*ナビの高さ*/
-  background-image: url(../img/wood.jpg);
+  background-color: #ffffffa5;
+  backdrop-filter: blur(12px);
   /* #FFFFCC */
     /*動き*/
   transition: all 0.6s;
@@ -53,7 +56,7 @@ h1{
     position: absolute;
     z-index: 999;
     top:50%;
-    left:15%;
+    left:50%;
     transform: translate(-50%,-50%);
 }
 
@@ -61,7 +64,7 @@ h1{
 
 #g-nav li{
   list-style: none;
-    text-align: center;
+  text-align: center;
 }
 
 #g-nav li a{
@@ -72,21 +75,21 @@ h1{
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 /*========= ボタンのためのCSS ===============*/
 .openbtn1{
   position:fixed;
-    z-index: 9999;/*ボタンを最前面に*/
+  z-index: 9999;/*ボタンを最前面に*/
   top:10px;
   right: 10px;
   cursor: pointer;
-    width: 50px;
-    height:50px;
+  width: 50px;
+  height:50px;
 }
-  
-/*×に変化*/  
+
+/*×に変化*/
 .openbtn1 span{
     display: inline-block;
     transition: all .4s;
@@ -94,12 +97,12 @@ h1{
     left: 14px;
     height: 3px;
     border-radius: 2px;
-    background-color: #000000;
+    background-color: #ffffff;
     width: 45%;
   }
 
 .openbtn1 span:nth-of-type(1) {
-  top:15px; 
+  top:15px;
 }
 
 .openbtn1 span:nth-of-type(2) {
@@ -129,12 +132,13 @@ h1{
 }
 
 header{
-  background-color: #ddc591;
+  background-image: url(../img/wood1.jpg);
   padding: 10px;
 }
 
 header .title{
   font-family: 'Aamonoline';
   font-size: 40px;
+  color: #ffffff;
 }
 
