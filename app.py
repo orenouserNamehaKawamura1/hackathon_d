@@ -5,6 +5,7 @@ import secrets
 from user.account.account import user_bp
 from user.account.login import login_bp
 from admin.adminuser.adminlogin import admin_bp
+from admin.account_list.list import list_bp
 import string, random
 
 
@@ -14,6 +15,7 @@ app.secret_key = ''.join(random.choices(string.ascii_letters, k=256))
 app.register_blueprint(user_bp)
 app.register_blueprint(login_bp)
 app.register_blueprint(admin_bp)
+app.register_blueprint(list_bp)
 
 app.config['SESSION_TYPE'] = 'filesystem'  
 app.config['SESSION_PERMANENT'] = False  
