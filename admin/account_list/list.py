@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for,session
 import db.list_db 
 
-list_bp = Blueprint('list', __name__, url_prefix='',
+list_bp = Blueprint('list', __name__, url_prefix='/list',
                       template_folder='templates',
                         static_url_path='/static',
                           static_folder='./static')
