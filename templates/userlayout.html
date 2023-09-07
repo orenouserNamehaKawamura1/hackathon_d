@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/userlayout.css')}}">
+    {% block css %}
+
+    {% endblock %}
+</head>
+<body>
+    <div class="header">
+        <header>
+            <h1 class="title">Music Art</h1>
+        </header>
+        <div class="openbtn1"><span></span><span></span><span></span></div>
+        <nav id="g-nav">
+            <div id="g-nav-list">
+                <ul>
+                    <li><a href="#">TOP</a></li>
+                    <li><a href="#">画像生成</a></li>
+                    <li><a href="#">ログアウト</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    {% block content %}
+
+    {% endblock %}
+
+    <script src="{{url_for('static',filename='js/jquery-3.4.1.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/5-1-14.js')}}"></script>
+</body>
+</html>
