@@ -1,3 +1,10 @@
+{% if err != null %}
+<p style="color:red">{{err}}</p>
+{% endif %}
+
+{% if msg != null %}
+<p style="color:red">{{msg}}</p>
+{% endif %}
 <form action="{{url_for('user.register_account')}}" method="post" id = "register-form">
     <p class="fsize">ユーザー登録</p>
     メールアドレス：<input type="mail" name="mail" required><br>
