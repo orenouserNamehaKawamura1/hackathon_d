@@ -36,8 +36,8 @@ body, h1, p, button {
     width: 360px;
     padding: 10px;
     margin-bottom: 15px;
-    color: #ffffff;
-    background-color: #808080;
+    color: #333;
+    background-color: #ffffff;
     border: 1px solid #ccc; /* フィールドとボタンにボーダーを追加 */
   border-radius: 5px; /* ボタンを角丸にする */
 
