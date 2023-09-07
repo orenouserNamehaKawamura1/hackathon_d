@@ -1,0 +1,11 @@
+{% if err != null %}
+<p style="color:red">{{err}}</p>
+{% endif %}
+<form action="{{url_for('admin.login_function')}}" method="post">
+    <p class="fsize">管理者ログイン</p>
+    メールアドレス：<input type="mail" name="mail" value="{{data.mail if data is defined else ''}}"><br>
+    パスワード：<input type="password" name="pas" value="{{data.pas if data is defined else ''}}"><br>
+    
+    <button type="submit">ログイン</button>
+  </form>
+<a href="{{url_for('user.register')}}">アカウント登録</a>
