@@ -1,3 +1,11 @@
+{% if err != null %}
+<p style="color:red">{{err}}</p>
+{% endif %}
+
+{% if msg != null %}
+<p style="color:red">{{msg}}</p>
+{% endif %}
+
 {% extends 'layout.html' %}
 
 {% block content %}
