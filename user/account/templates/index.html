@@ -1,3 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block css %}
+  <link rel="stylesheet" href="{{url_for('login.static' , filename='css/login.css')}}">
+{% endblock %}
+
+{% block content %}
 <form action="{{url_for('login.login_function')}}" method="post">
   <p class="fsize">ログイン</p>
   メールアドレス：<input type="email" id="mail" name="mail"><br>
@@ -7,3 +14,4 @@
 </form>
 <p id="error-message" style="color: red;"></p>
 <a href="{{url_for('user.register')}}">アカウント登録</a>
+{% endblock %}
