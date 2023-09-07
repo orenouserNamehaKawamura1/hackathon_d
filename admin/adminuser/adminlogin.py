@@ -35,8 +35,7 @@ def login_function():
         admin_bp.permanent_session_lifetime = timedelta(minutes=5) 
         response = make_response(redirect(url_for('login.login_result', type=type)))
         response.set_cookie('session_cookie', value=session['login_ID'], httponly=True)
-
-        return redirect(url_for('admin.login_result')) 
+        return redirect(url_for('list.ac_list',page_num=1,type=type)) 
             
     else:
         err = "パスワードまたはメールアドレスが違います"
