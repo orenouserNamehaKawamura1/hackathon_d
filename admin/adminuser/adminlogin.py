@@ -16,7 +16,10 @@ admin_bp.secret_key = ''.join(random.choices(string.ascii_letters, k=256))
 def admin():
     data = request.args.get('data')
     err = request.args.get('err')
-    return render_template('admin.html',err=err,data=data)
+    if err != None:
+        return render_template('admin.html',err=err,data=data)
+    else:
+        return render_template('admin.html')
     
 @admin_bp.route('/login_result')
 def login_result():
