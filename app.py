@@ -7,9 +7,14 @@ from user.account.login import login_bp
 from admin.adminuser.adminlogin import admin_bp
 from admin.account_list.list import list_bp
 import string, random
+from dotenv import load_dotenv
+from os.path import join, dirname
 
 
 app = Flask(__name__)
+load_dotenv(verbose=True)
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 secret_key = secrets.token_hex(16)
 app.secret_key = ''.join(random.choices(string.ascii_letters, k=256))
 app.register_blueprint(user_bp)
