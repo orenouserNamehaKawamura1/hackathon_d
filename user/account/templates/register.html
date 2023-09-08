@@ -1,3 +1,7 @@
+{% extends 'layout.html' %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('user.static' , filename='css/register.css')}}">
+{% endblock %}
 {% if err != null %}
 <p style="color:red">{{err}}</p>
 {% endif %}
@@ -6,17 +10,23 @@
 <p style="color:red">{{msg}}</p>
 {% endif %}
 
-{% extends 'layout.html' %}
-
 {% block content %}
+<div class="layout1">
 <form action="{{url_for('user.register_account')}}" method="post" id = "register-form">
   <p class="fsize">ユーザー登録</p>
-  メールアドレス：<input type="mail" name="mail" required><br>
-  パスワード：<input type="password" id="password" name="pas" required><br>
-  確認用パスワード：<input type="password" id="confirm-password" name="confirm-password" required><br>
+  <div class="merupasu">
+  <p>メールアドレス：</p>
+  <input type="mail" id="mail" name="mail" required>
+  <p>パスワード：</p>
+  <input type="password" id="password" name="password" required>
+  <p>確認用パスワード：</p>
+  <input type="password" id="confirm-password" name="confirm-password" required>
+  </div>
   <button type="submit">登録</button>
 </form>
+</div>
 <div id="password-match"></div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{{url_for('login.static', filename='js/register.js')}}"></script>
 {% endblock %}
+
