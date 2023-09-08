@@ -1,9 +1,8 @@
 {% if err != null %}
 <p style="color:red">{{err}}</p>
 {% endif %}
-<link rel="stylesheet" href="{{url_for('login.static' , filename='css/login.css')}}">
 <div class ="layout1">
-<form action="{{url_for('admin.login_function')}}" method="post">
+    <form action="{{url_for('admin.login_function')}}" method="post">
     <p class="fsize">管理者ログイン画面</p>
     <div class="merupasu">
    <p> メールアドレス：</p>

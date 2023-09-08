@@ -34,8 +34,11 @@ def login_function():
         # response = make_response(redirect(url_for('login.login_result', type=type)))
         # response.set_cookie('session_cookie', value=session['login_ID'], httponly=True)
 
-        return redirect(url_for('login.login_result',type=type)) 
-            
+        return redirect(url_for('login.login_result',type=type))
+
+    # elif mail == 'admin@gmail.com' and pas == 'admin123!':
+    #     return redirect(url_for('admin.admin'))
+
     else:
 
         return jsonify({'success': False, 'message': 'ユーザー名またはパスワードが正しくありません'})
