@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+{% if err != null %}
+<p style="color:red">{{err}}</p>
+{% endif %}
+<form action="{{url_for('admin.password_cahnge')}}" method="post">
+    <p>管理者パスワード変更画面</p>
+    <p>メールアドレス：</p>
+      <input type="email" id="mail" name="mail">
+    <p>パスワード：</p>
+    <input type="password" id="password" name="password"> 
+    <button type="submit">変更</button>
+</form>
+{% endblock %}

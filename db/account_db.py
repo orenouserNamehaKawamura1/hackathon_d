@@ -62,4 +62,67 @@ def select_userid(mail):
     connection.close()
     return id
 
+def ad_login(mail,pas):
+    sql = "SELECT pass, salt FROM admin WHERE mail = %s"
+    flg = False 
+    try :
+        connection = DB.get_connection()
+        cursor = connection.cursor()
+        cursor.execute(sql,(mail,))
+        mail = cursor.fetchone()
+        if mail != None:
+            salt = mail[1]
+            
+            hashed_password = get_hash(pas, salt)
+            if hashed_password == mail[0]:
+                flg = True
+    except psycopg2.DatabaseError :
+        flg = False
+    finally : 
+        cursor.close()
+        connection.close()
+    return flg
+
+def change_password(mail,pas):
+    sql = "UPDATE users SET pass = %s, salt = %s WHERE mail = %s AND delete_flag = 'f'"
+    salt = get_salt()
+    new_hashed_password = get_hash(pas, salt)
+    
+    try:
+        connection = DB.get_connection()
+        cursor = connection.cursor()
+        
+        cursor.execute(sql, (new_hashed_password, salt, mail))
+        connection.commit()
+        count = cursor.rowcount
+        
+    except psycopg2.DatabaseError:
+        count = 0
+    finally:
+        cursor.close()
+        connection.close()
+    
+    return count
+
+def change_ad_password(mail,pas):
+    sql = 'UPDATE admin SET pass = %s, salt = %s WHERE mail = %s'
+    salt = get_salt()
+    new_hashed_password = get_hash(pas, salt)
+    
+    try:
+        connection = DB.get_connection()
+        cursor = connection.cursor()
+        
+        cursor.execute(sql, (new_hashed_password, salt, mail))
+        connection.commit()
+        count = cursor.rowcount
+        
+    except psycopg2.DatabaseError:
+        count = 0
+    finally:
+        cursor.close()
+        connection.close()
+    
+    return count
+
 
