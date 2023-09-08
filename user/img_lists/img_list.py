@@ -6,9 +6,6 @@ img_list_bp = Blueprint('img', __name__, url_prefix='/img',
                         static_url_path='/static',
                           static_folder='./static')
 
-@img_list_bp.route('/img_list')
-def index():
-  return redirect(url_for('img.list',page_num=1))
 
 @img_list_bp.route('/<int:page_num>', methods=["GET"])
 def list(page_num):
