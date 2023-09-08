@@ -34,7 +34,7 @@ def login_function():
         # response = make_response(redirect(url_for('login.login_result', type=type)))
         # response.set_cookie('session_cookie', value=session['login_ID'], httponly=True)
 
-        return redirect(url_for('login.login_result',type=type)) 
+        return redirect(url_for('img.list',page_num=1)) 
             
     else:
 
