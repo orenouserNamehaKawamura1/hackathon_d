@@ -83,6 +83,27 @@ def ad_login(mail,pas):
         connection.close()
     return flg
 
+def change_password(mail,pas):
+    sql = 'UPDATE users SET pass = %s, salt = %s WHERE mail = %s'
+    salt = get_salt()
+    new_hashed_password = get_hash(pas, salt)
+    
+    try:
+        connection = DB.get_connection()
+        cursor = connection.cursor()
+        
+        cursor.execute(sql, (new_hashed_password, salt, mail))
+        connection.commit()
+        count = cursor.rowcount
+        
+    except psycopg2.DatabaseError:
+        count = 0
+    finally:
+        cursor.close()
+        connection.close()
+    
+    return count
+
 
 
 
