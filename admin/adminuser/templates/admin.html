@@ -1,5 +1,5 @@
-{% if err != null %}
-<p style="color:red">{{err}}</p>
+{% if msg != null %}
+<p style="color:red">{{msg}}</p>
 {% endif %}
 <link rel="stylesheet" href="{{url_for('login.static' , filename='css/login.css')}}">
 <div class ="layout1">
@@ -13,5 +13,6 @@
 </div>
     <button type="submit">ログイン</button>
   </form>
-  <div class="account_center">  
+  <div class="account_center"> 
+    <a href="{{url_for('admin.cahnge_pas')}}">パスワード変更</a> 
   </div>
