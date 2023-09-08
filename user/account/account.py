@@ -26,7 +26,7 @@ def stand():
 @user_bp.route('/register_exe', methods=['POST'])
 def register_account():
      mail = request.form.get('mail')
-     pas = request.form.get('pas')
+     pas = request.form.get('password')
      if validate_password(pas) == False:
           err = "パスワードの形式が間違っています"
           return redirect(url_for('user.result',err=err))
