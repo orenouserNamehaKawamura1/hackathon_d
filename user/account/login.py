@@ -38,6 +38,7 @@ def login_function():
         session['login_ID'] = str(ID[0])  # 整数を文字列に変換する
         session.permanent = True
         login_bp.permanent_session_lifetime = timedelta(minutes=5) 
+
         response = make_response("Cookie set successfully")
         response.set_cookie('session_cookie', value=session['login_ID'], httponly=True)
         return redirect(url_for('login.login_result',type=type)) 
