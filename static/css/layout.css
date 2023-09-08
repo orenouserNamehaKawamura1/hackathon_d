@@ -5,16 +5,11 @@
   src: url(../font/Aamonoline.ttf);
 }
 
-body {
+body,h1,p {
   padding: 0;
   margin: 0;
   overflow: hidden;
   /* background-image: radial-gradient(circle, rgba(225, 225, 225, 1) 40%, rgba(216, 216, 216, 1) 50%, rgba(206, 206, 206, 1) 70%, rgba(197, 197, 197, 1) 80%); */
-}
-
-h1{
-  padding: 0;
-  margin: 0;
 }
 
 header{
@@ -26,5 +21,29 @@ header .title{
   font-family: 'Aamonoline';
   font-size: 40px;
   color: #f9f9f9;
+}
+#mail,
+#password,
+#confirm-password {
+  width: 360px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  /* フィールドとボタンにボーダーを追加 */
+  border-radius: 5px;
+  /* ボタンを角丸にする */
+}
+
+button {
+  width: 360px;
+  padding: 10px;
+  margin-bottom: 15px;
+  color: #ffffff;
+  background-color: #808080;
+  border: 1px solid #ccc;
+  /* フィールドとボタンにボーダーを追加 */
+  border-radius: 5px;
+  /* ボタンを角丸にする */
+
 }
 
