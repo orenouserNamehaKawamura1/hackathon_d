@@ -1,74 +1,64 @@
-/* スタイルのリセット */
-body, h1, p, button {
-    margin: 0;
-    padding: 0;
-  }
-  
   /* ページ全体を中央揃えにする */
   .layout1 {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 90vh;
-    background-color: #ffffff; /* ページの背景色をグレーに設定 */
+    background-color: #ffffff;
+    /* ページの背景色をグレーに設定 */
   }
-  
+
   /* フォームのスタイル */
   form {
-    background-color: #E5E5E5; /* フォームの背景色を白に設定 */
+    background-color: #E5E5E5;
+    /* フォームの背景色を白に設定 */
     padding: 50px 150px;
     border-radius: 10px;
     text-align: center;
   }
-  
+
   /* タイトルのスタイル */
   .fsize {
     font-size: 24px;
     margin-bottom: 20px;
-    color: #333; /* タイトルの文字色をダークグレーに設定 */
-  }
-  
-  /* 入力フィールドとボタンのスタイル */
-  input[type="email"],
-  input[type="password"],
-  button {
-    width: 360px;
-    padding: 10px;
-    margin-bottom: 15px;
     color: #333;
-    background-color: #ffffff;
-    border: 1px solid #ccc; /* フィールドとボタンにボーダーを追加 */
-  border-radius: 5px; /* ボタンを角丸にする */
-
+    /* タイトルの文字色をダークグレーに設定 */
   }
-  
+
   /* エラーメッセージのスタイル */
   #error-message {
     margin-bottom: 10px;
     font-size: 14px;
   }
-  
+
   /* リンクのスタイル */
   a {
     text-decoration: none;
-    color: #007bff; /* リンクの文字色を青に設定 */
+    color: #007bff;
+    /* リンクの文字色を青に設定 */
   }
-  .merupasu{
- text-align: left;
+
+  .merupasu {
+    text-align: left;
   }
+
   /* ホバー時のリンクのスタイル */
   a:hover {
     text-decoration: underline;
   }
-  
+
   /* アカウント登録リンクのスタイル */
   .register-link {
-    margin-top: 10px; /* マージンを追加してログインボタンから下に移動 */
-    display: block; /* リンクをブロック要素に変更して横幅を100%に設定 */
+    margin-top: 10px;
+    /* マージンを追加してログインボタンから下に移動 */
+    display: block;
+    /* リンクをブロック要素に変更して横幅を100%に設定 */
   }
-  .account_center{
+
+  .account_center {
     text-align: center;
   }
 
-
-
+  button {
+    width: 180px;
+  }
