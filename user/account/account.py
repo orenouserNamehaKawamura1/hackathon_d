@@ -81,3 +81,7 @@ def confirm_email(token):
         return redirect(url_for('user.result', msg=msg))
     else:
         return redirect(url_for('user.result'))
+
+@user_bp.route('/generate')
+def generate():
+    return render_template('generate.html')
