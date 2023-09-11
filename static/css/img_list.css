@@ -1,0 +1,27 @@
+.arts {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.arts img{
+    width: 220px;
+    height: 300px;
+    object-fit: cover;
+    box-shadow: 0px 0px 80px rgb(255, 255, 255), 
+                0px 0px 60px rgb(255, 246, 230), 
+                0px 0px 40px rgb(255, 234, 195), 
+                0px 0px 30px rgb(255, 205, 155);
+}
+
+.pagelinks{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.pagelinks a{
+    letter-spacing: 10px;
+    color: black;
+    font-size: 30px;
+    text-decoration: none;
+}
