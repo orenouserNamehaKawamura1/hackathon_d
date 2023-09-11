@@ -14,6 +14,7 @@
 <div class="layout1">
 <form action="{{url_for('user.register_account')}}" method="post" id = "register-form">
   <p class="fsize">ユーザー登録</p>
+  <div id="password-match"></div>
   <div class="merupasu">
   <p>メールアドレス：</p>
   <input type="mail" id="mail" name="mail" required>
@@ -22,11 +23,11 @@
   <p>確認用パスワード：</p>
   <input type="password" id="confirm-password" name="confirm-password" required>
   </div>
+  <button class="botton" onclick="location.href='{{url_for('login.index')}}'">戻る</button>
   <button type="submit">登録</button>
   <div id="password-match"></div>
 </form>
 </div>
-<div id="password-match"></div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{{url_for('login.static', filename='js/register.js')}}"></script>
 {% endblock %}
