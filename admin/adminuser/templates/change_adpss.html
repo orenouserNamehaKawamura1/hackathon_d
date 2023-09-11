@@ -1,19 +1,24 @@
 {% extends 'layout.html' %}
 
 {% block css %}
-
+<link rel="stylesheet" href="{{url_for('login.static' , filename='css/login.css')}}">
 {% endblock %}
 
 {% block content %}
 {% if err != null %}
 <p style="color:red">{{err}}</p>
 {% endif %}
+<div class ="layout1">
 <form action="{{url_for('admin.password_cahnge')}}" method="post">
-    <p>管理者パスワード変更画面</p>
+    <p class="fsize">管理者パスワード変更画面</p>
+    <div class="merupasu">
     <p>メールアドレス：</p>
       <input type="email" id="mail" name="mail">
     <p>パスワード：</p>
     <input type="password" id="password" name="password"> 
+  </div>
+  <button class="botton" onclick="location.href='{{url_for('login.index')}}'">戻る</button>
     <button type="submit">変更</button>
 </form>
+</div>
 {% endblock %}
