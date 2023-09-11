@@ -1,3 +1,8 @@
+{% extends 'layout.html' %}
+{% block css %}
+  <link rel="stylesheet" href="{{url_for('login.static' , filename='css/login.css')}}">
+{% endblock %}
+{% block content %}
 {% if msg != null %}
 <p style="color:red">{{msg}}</p>
 {% endif %}
@@ -6,12 +11,13 @@
     <p class="fsize">管理者ログイン画面</p>
     <div class="merupasu">
    <p> メールアドレス：</p>
-   <input type="email" name="mail" value="{{data.mail if data is defined else ''}}"><br>
+   <input type="email" id ="mail" name="mail" value="{{data.mail if data is defined else ''}}"><br>
     <p>パスワード：</p>
-    <input type="password" name="pas" value="{{data.pas if data is defined else ''}}"><br>
-</div>
+    <input type="password" name="pas"id="password" value="{{data.pas if data is defined else ''}}"><br>
+    </div>
     <button type="submit">ログイン</button>
+    <div class="account_center"> 
+      <a href="{{url_for('admin.cahnge_pas')}}">パスワード変更</a> 
+    </div>
   </form>
-  <div class="account_center"> 
-    <a href="{{url_for('admin.cahnge_pas')}}">パスワード変更</a> 
-  </div>
+  {% endblock %}

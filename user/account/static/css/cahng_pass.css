@@ -1,5 +1,5 @@
-  /* ページ全体を中央揃えにする */
-  .layout1 {
+/* ページ全体を中央揃えにする */
+.layout1 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,4 +61,4 @@
 
   button {
     width: 180px;
-  } 
+  }

@@ -9,7 +9,7 @@ body {
   padding: 0;
   margin: 0;
   overflow: hidden;
-  background-image: radial-gradient(circle, rgba(225, 225, 225, 1) 40%, rgba(216, 216, 216, 1) 50%, rgba(206, 206, 206, 1) 70%, rgba(197, 197, 197, 1) 80%);
+  background-image: radial-gradient(rgba(207, 207, 207, 1) 10%, rgba(176, 176, 176, 1) 40%, rgba(148, 148, 148, 1) 68%, rgba(111, 111, 111, 1) 90%);
 }
 
 h1{

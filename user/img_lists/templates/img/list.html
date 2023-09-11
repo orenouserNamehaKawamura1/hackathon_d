@@ -1,21 +1,20 @@
 {% extends 'userlayout.html' %}
 
 {% block css %}
-
+<link rel="stylesheet" href="{{url_for('static',filename='css/img_list.css')}}">
 {% endblock %}
 
 {% block content %}
-<p>画像一覧</p>
-
+<div class="arts">
     {% for image in images %}
-            <tr>
-                <td><img src = "{{url_for('static' , filename=images[0])}}"></td>
-            </tr>
+        <img src = "{{url_for('static' , filename=image[0])}}">
     {% endfor %}
-    </table>
+</div>
+<div class="pagelinks">
     {%for i in range(1,page+1)%}
         {% if i <= total_pages %}
             <a href = "/img/{{i}}">{{i}}</a>
         {% endif %}
     {% endfor %}
+</div>
 {% endblock %}

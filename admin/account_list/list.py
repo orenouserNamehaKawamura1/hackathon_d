@@ -8,7 +8,7 @@ list_bp = Blueprint('list', __name__, url_prefix='/list',
                     static_folder='./static')
 
 
-@list_bp.route('/<int:page_num>', methods=["GET"])
+@list_bp.route('/<int:page_num>/', methods=["GET"])
 def ac_list(page_num):
     per_page = 4
     users = db.list_db.ac_lists(page_num, per_page)
