@@ -59,9 +59,21 @@
     transition: background-color 0.24s ease 0s, box-shadow 0.24s ease 0s;
 }
 
-
-
-
-.example5 input {
-    margin: 5px;
-}
+#dropbox {
+    width: 500px;
+    height: 200px;
+    border: 1px solid blue;
+    background: #eee;
+  }
+  #urllists {
+    margin-top: 30px;
+    width: 400px;
+    height: 300px;
+    overflow: auto;
+    /* floar: left;
+    boader: 1px solid blue; */
+  }
+  #currentimage {
+    margin-left: 420px;
+    margin-top: 30px;
+  }
