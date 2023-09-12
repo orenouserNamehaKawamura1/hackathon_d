@@ -1,15 +1,18 @@
 from flask import Blueprint, render_template, redirect, url_for, make_response
 from flask import request, session
 from db.account_db import inset_ad_user
+from db.account_db import img_post
 from datetime import timedelta
 from .syntax_check import syntax_check
 from .syntax_check import validate_password
 from .token_generator import generate_token
 from .mail import send_mail
 import os
-
+from datetime import datetime
 from .AudioToImage import thread_func
-
+import requests
+from PIL import Image
+from io import BytesIO
 ALLOWED_EXTENSIONS = set(['mp3', 'wav', 'mp3'])
 
 user_bp = Blueprint('user', __name__, url_prefix='/user',
@@ -21,7 +24,16 @@ user_bp = Blueprint('user', __name__, url_prefix='/user',
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
-
+def download_image(url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        return BytesIO(response.content)
+    else:
+        return None
+def current_time_in_seconds():
+    now = datetime.now()
+    seconds_since_midnight = (now - now.replace(hour=0, minute=0, second=0, microsecond=0)).total_seconds()
+    return int(seconds_since_midnight)
 
 @user_bp.route('/register')
 def register():
@@ -100,11 +112,25 @@ def generate():
 
 @user_bp.route('/generate', methods=['POST'])
 def generate_post():
+    id = session.get('login_ID')
     file = request.files['xhr2upload']
     if file and allowed_file(file.filename):
         filename = file.filename
         file.save(os.path.join('./temp/uploads', filename))
 
-        thread_func(filename)
-
-        return redirect(url_for('img.list', page_num=1))
+        url = thread_func(filename)
+        image_data = download_image(url)
+        if image_data:
+        # 画像を開いて表示
+            current_seconds = current_time_in_seconds()
+            img = Image.open(image_data)
+            img.show()
+            # ローカルに保存するパス
+            path = f"static/imge/{current_seconds}.png"
+            img.save(path)
+            # DBに保存するパス
+            paths = f"imge/{current_seconds}.png"
+            img_post(paths,id)
+        else:
+            print("画像のダウンロードに失敗しました。")
+    return redirect(url_for('img.list', page_num=1))
