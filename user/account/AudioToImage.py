@@ -89,5 +89,6 @@ def thread_func(filename):
     prompt = audio_processor.convert_words_to_popular_prompt(words)
     image_url = audio_processor.convert_word_to_image(prompt)
 
-    # データベース登録用処理ここに書く
-    print(image_url)
+    print(image_url)   
+    return image_url
+# データベース登録用処理ここに書く
