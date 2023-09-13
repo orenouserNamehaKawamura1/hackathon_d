@@ -9,25 +9,26 @@ var DnDUploader = function () {
     parent.addEventListener("dragover", function (e) { e.stopPropagation(); e.preventDefault(); }, false);
 
     var _handleDrop = function (e) {
-        var dt = e.dataTransfer, files = dt.files, count = files.length;
+        var files = e.dataTransfer.files;
+        var fr = new FileReader();
+        fr.readAsDataURL(files[0]);
 
+        // check file extension
         var types = [
             'audio/mp3',
             'audio/mpeg',
             'audio/wav',
         ];
 
-        if (files[0].size < 1048576) {
-            var file = files[0];
-            var type = file.type;
-
-            if ($.inArray(file.type, types) == -1) {
-                alert(file.type + 'はサポート外です。');
-            } else {
-                _upload(file);
+        fr.onload = function (e) {
+            var file = e.target.result;
+            var type = file.split(';')[0].split(':')[1];
+            if (types.indexOf(type) < 0) {
+                alert('File type not supported');
+                return;
             }
-        } else {
-            alert('ファイルが大きすぎます');
+
+            _upload(files[0]);
         }
     };
 
