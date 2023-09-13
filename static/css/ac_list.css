@@ -1,0 +1,40 @@
+.contents{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h3{
+    font-size: 30px;
+    text-align: center;
+}
+
+.contents{
+    font-size: 20px;
+}
+
+.contents table td{
+    border: 2px solid #000000;
+    padding: 10px;
+}
+
+/* .contents table td .user{
+
+} */
+
+.contents table td a{
+    text-decoration: none;
+    color: black;
+}
+
+.links{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.links a{
+    text-decoration: none;
+    color: black;
+    font-size: 30px;
+}

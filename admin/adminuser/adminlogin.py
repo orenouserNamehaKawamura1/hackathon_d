@@ -68,7 +68,7 @@ def password_cahnge():
 
     if validate_password(pas) is False:
         err = "パスワードの形式が間違っています"
-        return redirect(url_for('login.cahnge_pas', err=err))
+        return redirect(url_for('admin.cahnge_pas', err=err))
 
     count = change_ad_password(mail, pas)
     if count == 1:
