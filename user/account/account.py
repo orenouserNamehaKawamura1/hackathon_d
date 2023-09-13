@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for
+from flask import Blueprint, render_template, redirect, url_for, make_response
 from flask import request, session
 from db.account_db import inset_ad_user
 from datetime import timedelta
@@ -6,11 +6,21 @@ from .syntax_check import syntax_check
 from .syntax_check import validate_password
 from .token_generator import generate_token
 from .mail import send_mail
+import os
+
+from .AudioToImage import thread_func
+
+ALLOWED_EXTENSIONS = set(['mp3', 'wav', 'mp3'])
 
 user_bp = Blueprint('user', __name__, url_prefix='/user',
                     template_folder='templates',
                     static_url_path='/static',
                     static_folder='./static')
+
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 
 @user_bp.route('/register')
@@ -82,6 +92,19 @@ def confirm_email(token):
     else:
         return redirect(url_for('user.result'))
 
-@user_bp.route('/generate')
+
+@user_bp.route('/generate', methods=['GET'])
 def generate():
     return render_template('generate.html')
+
+
+@user_bp.route('/generate', methods=['POST'])
+def generate_post():
+    file = request.files['xhr2upload']
+    if file and allowed_file(file.filename):
+        filename = file.filename
+        file.save(os.path.join('./temp/uploads', filename))
+
+        thread_func(filename)
+
+        return redirect(url_for('img.list', page_num=1))
