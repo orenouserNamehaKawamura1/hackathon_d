@@ -3,6 +3,9 @@ from flask import request, session
 from db.account_db import ad_login
 from db.account_db import select_userid
 from datetime import timedelta
+from user.account.token_generator import generate_token
+from user.account.mail import send_ad_mail_pass
+from user.account.syntax_check import syntax_check
 from user.account.syntax_check import validate_password
 from db.account_db import change_ad_password
 import string
@@ -68,17 +71,48 @@ def password_cahnge():
 
     if validate_password(pas) is False:
         err = "パスワードの形式が間違っています"
-        return redirect(url_for('admin.cahnge_pas', err=err))
+        return redirect(url_for('login.cahnge_pas', err=err))
+    token = generate_token()
+    session['token'] = token
+    print(session['token'])
+    session['mail'] = mail
+    session['pas'] = pas
+    session.permanent = True
+    admin_bp.permanent_session_lifetime = timedelta(minutes=5)
 
-    count = change_ad_password(mail, pas)
-    if count == 1:
-        msg = 'パスワード変更が完了しました'
-        return redirect(url_for('admin.admin', msg=msg))
+    send_ad_mail_pass(mail, token)
+    return render_template('stand.html')
+
+
+@admin_bp.route('/pass_change/<token>',methods=['GET'])
+def pass_change(token):
+    err = None
+    msg = None
+    if not token:
+        err = "メールを登録して完了させてください"
     else:
-        err = 'アカウントが見つかりません'
+        TOKEN = session.get('token')
+        print(f'TOKEN: {TOKEN} : token: {token}')
+        if TOKEN != token:
+            err = "トークンが無効です"
+        else:
+            mail = session.get('mail')
+            pas = session.get('pas')
+
+            if syntax_check(mail):
+                count = change_ad_password(mail, pas)
+                if count == 1:
+                    msg = 'パスワード変更が完了しました'
+                else:
+                    err = 'パスワード変更に失敗しました'
+            else:
+                err = 'メールアドレスが有効ではありません'
+
+    session.pop('token', None)
+    if err:
         return redirect(url_for('admin.cahnge_pas', err=err))
-
-
+    elif msg:
+        return redirect(url_for('admin.admin',msg = msg))
 @admin_bp.route('/logout')
 def logout():
     session.pop('user_name', None)

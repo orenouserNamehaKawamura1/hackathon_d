@@ -2,4 +2,7 @@
 /__pycache__/
 */__pycache__/
 */*/__pycache__/
-flask_session/*
+flask_session/
+*.mp3
+*.jpg
+*.png

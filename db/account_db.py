@@ -142,3 +142,20 @@ def change_ad_password(mail, pas):
         connection.close()
 
     return count
+def img_post(paths,id):
+    sql = "INSERT INTO images VALUES(default,%s,%s)"
+    try:
+        connection = DB.get_connection()
+        cursor = connection.cursor()
+        cursor.execute(sql,(paths,id))
+        count = cursor.rowcount
+        connection.commit()
+    except Exception as e:
+        print(e)
+        count = 0
+    except psycopg2.DatabaseError:
+        count = 0
+    finally:
+        cursor.close()
+        connection.close()
+    return count

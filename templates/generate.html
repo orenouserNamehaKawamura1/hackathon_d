@@ -5,7 +5,12 @@
 {% endblock %}
 
 {% block content %}
-  <div id="content">
+
+    <div id="loading-screen">
+      <div class="loader"></div>
+      <div class="loading-text">画像を生成中...</div> <!-- 追加したテキスト -->
+    </div>
+    <div id="content">
       <div id="header1">
           <h1>音声ファイルを選んでください</h1>
           <h2>※MP3,WAVのみ</h2>
@@ -14,11 +19,12 @@
       <div id="urllists"></div>
       <div id=currentimage></div>
       <div class="km_btn1">
-        <button class="km_btn" type="submit">戻る</button>
+        <button class="km_btn" onclick="location.href='{{url_for('img.list',page_num = 1)}}'">戻る</button>
       </div>
   </div>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
   <script type="text/javascript" src="..\static\js\generate.js"></script>
   <script type="text/javascript" src="..\static\js\upload.js"></script>
+
 {% endblock %}
