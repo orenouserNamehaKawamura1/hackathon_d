@@ -12,7 +12,7 @@ var DnDUploader = function () {
         var files = e.dataTransfer.files;
         var fr = new FileReader();
         fr.readAsDataURL(files[0]);
-
+        document.getElementById('loading-screen').style.display = 'block';
         // check file extension
         var types = [
             'audio/mp3',
@@ -38,6 +38,10 @@ var DnDUploader = function () {
         var xhr = new XMLHttpRequest()
         xhr.open("POST", "http://localhost:5000/user/generate");
         xhr.send(fd);
+        xhr.onload = function () {
+            document.getElementById('loading-screen').style.display = 'none';
+            alert("画像の生成に成功しました");
+        };
     }
 }
 

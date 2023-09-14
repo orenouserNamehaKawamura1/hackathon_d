@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, make_response
+from flask import Blueprint, render_template, redirect, url_for, make_response,jsonify
 from flask import request, session
 from db.account_db import inset_ad_user
 from db.account_db import img_post
@@ -121,7 +121,7 @@ def generate_post():
         url = thread_func(filename)
         image_data = download_image(url)
         if image_data:
-        # 画像を開いて表示
+            # 画像を開いて表示
             current_seconds = current_time_in_seconds()
             img = Image.open(image_data)
             img.show()
@@ -130,7 +130,8 @@ def generate_post():
             img.save(path)
             # DBに保存するパス
             paths = f"imge/{current_seconds}.png"
-            img_post(paths,id)
+            img_post(paths, id)
+            data = 'ok'
+            return jsonify(data)
         else:
-            print("画像のダウンロードに失敗しました。")
-    return redirect(url_for('img.list', page_num=1))
+            print("画像のダウンロードに失敗しました.")

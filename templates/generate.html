@@ -8,6 +8,10 @@
     <title>画像生成画面</title>
   </head>
   <body>
+    <div id="loading-screen">
+      <div class="loader"></div>
+      <div class="loading-text">画像を生成中...</div> <!-- 追加したテキスト -->
+    </div>
     <div id="content">
       <div id="header1">
         <h1>音声ファイルを選んでください</h1>
@@ -15,12 +19,10 @@
       </div>
       <div id="drop-area"></div>
       <div class="km_btn1">
-        <button class="km_btn" type="submit">戻る</button>
+        <button class="km_btn" onclick="location.href='{{url_for('img.list',page_num = 1)}}'">戻る</button>
       </div>
     </div>
   </body>
 
   <script type="text/javascript" src="..\static\js\upload.js"></script>
-
-
 </html>
