@@ -18,7 +18,7 @@ def list(page_num):
     return render_template(
                             'img/list.html',
                             images=images,
-                            counts=counts,
+                            counts=counts[0],
                             page=page,
                             total_pages=total_pages
                             )

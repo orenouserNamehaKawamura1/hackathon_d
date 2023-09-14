@@ -6,9 +6,18 @@
 
 {% block content %}
 <div class="arts">
-    {% for image in images %}
-        <img src = "{{url_for('static' , filename=image[0])}}">
-    {% endfor %}
+    {% if counts == 0 %}
+        <div class="notimg">
+            <h1>あなたが選ぶ音楽で画像を作ろう！</h1>
+            <div class="button">
+                <button type="button" onclick="location.href='{{url_for('user.generate')}}'">画像を生成する</button>
+            </div>
+        </div>
+    {% else %}
+        {% for image in images %}
+            <img src = "{{url_for('static' , filename=image[0])}}">
+        {% endfor %}
+    {% endif %}
 </div>
 <div class="pagelinks">
     {%for i in range(1,page+1)%}
