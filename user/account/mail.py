@@ -68,3 +68,35 @@ def sendmail_pass(mail, token):
     except Exception as e:
         print(f"メール送信エラー: {str(e)}")
         return False
+    
+def send_ad_mail_pass(mail, token):
+    ID = os.environ['MAIL_ID']
+    PASS = os.environ['MAIL_PASS']
+    HOST = 'smtp.gmail.com'
+    PORT = 587
+
+    msg = MIMEMultipart()
+
+    text = f'''
+        下記のURLにアクセスしてパスワード変更を完了させてください\n
+        URL : http://127.0.0.1:5000/admin/pass_change/{token}
+        '''
+
+    subject = 'パスワード変更のお知らせ'
+
+    msg.attach(MIMEText(text, 'html'))
+
+    msg['Subject'] = subject
+    msg['From'] = email.utils.formataddr(('システムメール', ID))
+    msg['To'] = email.utils.formataddr(('ユーザ様', mail))
+
+    try:
+        server = SMTP(HOST, PORT)
+        server.starttls()
+        server.login(ID, PASS)
+        server.send_message(msg)
+        server.quit()
+        return True
+    except Exception as e:
+        print(f"メール送信エラー: {str(e)}")
+        return False
