@@ -107,12 +107,13 @@ def confirm_email(token):
 
 @user_bp.route('/generate', methods=['GET'])
 def generate():
-    return render_template('generate.html')
-
-
-@user_bp.route('/generate', methods=['POST'])
-def generate_post():
     id = session.get('login_ID')
+
+    return render_template('generate.html', id = id)
+
+
+@user_bp.route('/generate/<id>', methods=['POST'])
+def generate_post(id):
     file = request.files['xhr2upload']
     if file and allowed_file(file.filename):
         filename = file.filename

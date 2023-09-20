@@ -32,11 +32,14 @@ var DnDUploader = function () {
         }
     };
 
-    var _upload = function (file) {
+    var _upload = function (file) {       
+        var hidden_id = document.getElementById('user_id')
+        var id = hidden_id.value;
         var fd = new FormData();
         fd.append("xhr2upload", file);
         var xhr = new XMLHttpRequest()
-        xhr.open("POST", "http://localhost:5000/user/generate");
+        xhr.open("POST", "http://localhost:5000/user/generate/"+id);
+        console.log("http://localhost:5000/user/generate/"+id);
         xhr.send(fd);
         xhr.onload = function () {
             document.getElementById('loading-screen').style.display = 'none';
