@@ -102,6 +102,7 @@ def img_list(page_num, per_page):
 
 # imagesテーブルのレコード数を取得
 def img_count():
+    counts = 0
     sql = "SELECT COUNT(*) FROM images WHERE delete_flag = false"
 
     try:
@@ -109,6 +110,8 @@ def img_count():
         cursor = connection.cursor()
 
         cursor.execute(sql, ())
+       # _counts = cursor.fetchone()
+        #if(None != _counts):
         counts = cursor.fetchone()
 
     except psycopg2.DatabaseError:
