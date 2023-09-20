@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>削除しますか?</p>
+    <img src="{{url_for('static',filename=filename)}}">
+    <form method = "POST" action =  "{{url_for('img.delete',id = id )}}">
+        <input type="submit" value="削除">
+    </form>
+    <a href = "{{url_for('img.list',page_num=1)}}">戻る</a>
+</body>
+</html>

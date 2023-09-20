@@ -77,9 +77,9 @@ def ac_delete(id):
 
 # 画像一覧
 def img_list(page_num, per_page):
-    sql = '''SELECT img_path
+    sql = '''SELECT id,img_path
          FROM images
-         WHERE delete_flag = false
+         WHERE images.delete_flag = false AND images.user_id = (SELECT id FROM users WHERE users.id = images.user_id)
          ORDER BY id asc limit %s OFFSET %s
         '''
 
@@ -110,8 +110,6 @@ def img_count():
         cursor = connection.cursor()
 
         cursor.execute(sql, ())
-       # _counts = cursor.fetchone()
-        #if(None != _counts):
         counts = cursor.fetchone()
 
     except psycopg2.DatabaseError:
@@ -122,3 +120,24 @@ def img_count():
         connection.close()
 
         return counts
+
+#画像削除
+def img_delete(id):
+    sql = "UPDATE images SET delete_flag = True WHERE id = %s"
+
+    try:
+        connection = get_connection()
+        cursor = connection.cursor()
+
+        cursor.execute(sql, (id,))
+        connection.commit()
+        row = cursor.rowcount
+
+    except psycopg2.DatabaseError:
+        error = "エラーが発生しました。"
+
+    finally:
+        cursor.close()
+        connection.close()
+
+    return row
