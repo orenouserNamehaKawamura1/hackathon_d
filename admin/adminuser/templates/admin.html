@@ -11,10 +11,10 @@
     <p class="fsize">管理者ログイン画面</p>
     <div class="merupasu">
    <p> メールアドレス：</p>
-   <input type="email" name="mail" value="{{data.mail if data is defined else ''}}"><br>
+   <input type="email" name="mail"id="mail" value="{{data.mail if data is defined else ''}}">
     <p>パスワード：</p>
-    <input type="password" name="pas" value="{{data.pas if data is defined else ''}}"><br>
-</div>
+    <input type="password" name="pas"id="password" value="{{data.pas if data is defined else ''}}">
+    </div>
     <button type="submit">ログイン</button>
     <div class="account_center"> 
       <a href="{{url_for('admin.cahnge_pas')}}">パスワード変更</a> 

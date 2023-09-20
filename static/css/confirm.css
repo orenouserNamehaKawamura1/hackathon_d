@@ -1,0 +1,80 @@
+#content {
+    margin: 0 auto;
+    min-width: 600px;
+    max-width: 1000px;
+    text-align: center;
+}
+.layout1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    background-color: #ffffff; /* ページの背景色をグレーに設定 */
+  }
+  
+
+#drop-area p {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+}
+
+#drop-area {
+    margin: 0 auto;
+    width: 600px;
+    height: 150px;
+    background: #E5E5E5;
+
+}
+
+#drop-area::before {
+    content: "ここに音声ファイルをドラッグアンドドロップしてください";
+}
+
+#drop-area.active {
+    border: 2px #e5e5e5;
+    background-color: rgba(0, 135, 247, 0.05);
+}
+
+#header1 {
+    text-align: center;
+}
+.merupasu {
+    text-align: center;
+    font-size: 30px;
+    padding-top: 80px;
+  }
+.button1 {
+    width: 360px;
+    padding: 10px;
+    margin-bottom: 15px;
+    color: #ffffff;
+    background-color: #808080;
+    border: 1px solid #ccc;
+    /* フィールドとボタンにボーダーを追加 */
+    border-radius: 5px;
+    /* ボタンを角丸にする */
+  
+  }
+.button2 {
+    width: 360px;
+    padding: 10px;
+    margin-bottom: 15px;
+    color: #ffffff;
+    background-color: #db1a1a;
+    border: 1px solid #ccc;
+    /* フィールドとボタンにボーダーを追加 */
+    border-radius: 5px;
+    /* ボタンを角丸にする */
+  
+  }
+
+
+
+
+.example5 input {
+    margin: 5px;
+}

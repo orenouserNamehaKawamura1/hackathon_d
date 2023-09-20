@@ -1,17 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p>以下のユーザーを削除しますか？</p>
+
+{% extends 'layout.html' %}
+{% block css %}
+  <link rel="stylesheet" href="{{url_for('static' , filename='css/confirm.css')}}">
+{% endblock %}
+{% block content %}
+    <div id="header1">
+        <h1>以下のユーザーを削除しますか？</h1>
+    </div>
+      <div class="merupasu">
     <p>メールアドレス: {{ mail }}</p>
     <form method="POST" action="{{ url_for('list.delete', id=id) }}">
-        <input type="hidden" name="email" value="{{ mail }}">
-        <input type="submit" value="削除">
+        <input type="hidden" name="email"id="mail" value="{{ mail }}">
+    </div>
+    <div class ="layout1">
+    <div class="back_botton">
+        <button class="botton1" onclick="location.href='{{url_for('list.ac_list',page_num=1)}}'">戻る</botton>
+        <button class="botton2" type="submit">削除</botton>
+    </div>
+</div>
     </form>
-    <a href = "{{url_for('list.ac_list',page_num=1)}}">戻る</a>
-</body>
-</html>
+
+{% endblock %}
