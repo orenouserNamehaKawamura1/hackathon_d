@@ -35,6 +35,8 @@ def login_result():
 
 @login_bp.route('/login', methods=['POST'])
 def login_function():
+    session.pop('mail', None)
+    session.pop('pas', None)
     mail = request.form.get('mail')
     pas = request.form.get('password')
 
@@ -51,8 +53,9 @@ def login_function():
 
     else:
         msg = "パスワードまたはメールアドレスが違います"
-        input_data = {'mail': mail, 'pas': pas}
-        return redirect(url_for('login.index', msg=msg, data=input_data))
+        session['mail'] = mail
+        session['pas'] = pas
+        return redirect(url_for('login.index', msg=msg))
 
 
 @login_bp.route('/cahnge_pass', methods=['GET'])
