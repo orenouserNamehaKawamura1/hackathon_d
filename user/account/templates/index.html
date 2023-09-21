@@ -12,6 +12,9 @@
 <div class ="layout1">
   <form action="{{url_for('login.login_function')}}" method="post">
     <p class="fsize">利用者ログイン画面</p>
+    {% if msg != null %}
+    <p style="color:red">{{msg}}</p>
+    {% endif %}
     <div class="merupasu">
     <p>メールアドレス：</p>
       <input type="email" id="mail" name="mail" value="{{data.mail if data is defined else ''}}">
