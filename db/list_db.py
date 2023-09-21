@@ -103,7 +103,7 @@ def img_list(page_num, per_page):
 # imagesテーブルのレコード数を取得
 def img_count():
     counts = 0
-    sql = "SELECT COUNT(*) FROM images WHERE delete_flag = false"
+    sql = "SELECT COUNT(*) FROM images WHERE images.delete_flag = false AND images.user_id = (SELECT id FROM users WHERE users.id = images.user_id)"
 
     try:
         connection = get_connection()

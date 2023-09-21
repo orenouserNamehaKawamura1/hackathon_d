@@ -1,1 +1,15 @@
-<p>メールを確認してください</p>
+{% extends 'layout.html' %}
+
+{% block css %}
+  <link rel="stylesheet" href="{{url_for('login.static' , filename='css/stand.css')}}">
+{% endblock %}
+
+{% block content %}
+{% if err != null %}
+<p style="color:red">{{err}}</p>
+{% endif %}
+<div id="header1">
+<h1>メールを確認してください</h1>
+</div>
+
+{% endblock %}

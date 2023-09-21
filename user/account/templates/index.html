@@ -12,11 +12,14 @@
 <div class ="layout1">
   <form action="{{url_for('login.login_function')}}" method="post">
     <p class="fsize">利用者ログイン画面</p>
+    {% if msg != null %}
+    <p style="color:red">{{msg}}</p>
+    {% endif %}
     <div class="merupasu">
     <p>メールアドレス：</p>
-      <input type="email" id="mail" name="mail" value="{{data.mail if data is defined else ''}}">
+      <input type="email" id="mail" name="mail" value="{{session.mail if session.mail is defined else ''}}">
     <p>パスワード：</p>
-    <input type="password" id="password" name="password" value="{{data.mail if data is defined else ''}}"> 
+    <input type="password" id="password" name="password" value="{{session.pas if session.pas is defined else ''}}"> 
     </div>
     <button type="submit">ログイン</button>
     <a class="register-link" href="{{url_for('user.register')}}">アカウント登録</a>
