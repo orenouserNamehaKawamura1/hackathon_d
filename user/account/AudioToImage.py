@@ -88,7 +88,5 @@ def thread_func(filename):
     words = audio_processor.process_audio_segments(audio, segment_length)
     prompt = audio_processor.convert_words_to_popular_prompt(words)
     image_url = audio_processor.convert_word_to_image(prompt)
-
-    print(image_url)   
     return image_url
 # データベース登録用処理ここに書く

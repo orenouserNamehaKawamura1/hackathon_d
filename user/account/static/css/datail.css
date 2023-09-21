@@ -1,0 +1,73 @@
+  /* ページ全体を中央揃えにする */
+  .layout2 {
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    background-image: radial-gradient(circle, rgba(207, 207, 207, 1) 10%, rgba(176, 176, 176, 1) 40%, rgba(148, 148, 148, 1) 68%, rgba(111, 111, 111, 1) 90%);
+    background-color: #808080;
+    /* ページの背景色をグレーに設定 */
+  }
+
+  /* フォームのスタイル */
+  form {
+    background-color: #E5E5E5;
+    /* フォームの背景色を白に設定 */
+    padding: 50px 150px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  /* タイトルのスタイル */
+  .fsize {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    /* タイトルの文字色をダークグレーに設定 */
+  }
+  .header{
+    text-align: center;
+  }
+
+  /* エラーメッセージのスタイル */
+  #error-message {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  /* リンクのスタイル */
+  a {
+    text-decoration: none;
+    color: #007bff;
+    /* リンクの文字色を青に設定 */
+  }
+
+  .merupasu {
+    text-align: left;
+  }
+
+  /* ホバー時のリンクのスタイル */
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* アカウント登録リンクのスタイル */
+  .register-link {
+    margin-top: 10px;
+    /* マージンを追加してログインボタンから下に移動 */
+    display: block;
+    /* リンクをブロック要素に変更して横幅を100%に設定 */
+  }
+
+  .account_center {
+    text-align: center;
+  }
+
+  button {
+    width: 180px;
+  }
+.images{
+    width:auto;
+    height: 380px;
+    display: flex;
+    justify-content: center;
+  }

@@ -35,7 +35,7 @@ def confirm():
     return render_template('img/comfirm.html', filename = file,id=id)
 
 
-@img_list_bp.route('/delete/<int:id>', methods=['POST'])
+@img_list_bp.route('/delete/<int:id>', methods=['GET'])
 def delete(id):
     row = db.list_db.img_delete(id)
     if row == 1:
