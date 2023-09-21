@@ -11,6 +11,6 @@
     <form method = "POST" action =  "{{url_for('img.delete',id = id )}}">
         <input type="submit" value="削除">
     </form>
-    <a href = "{{url_for('img.list',page_num=1)}}">戻る</a>
+    <a href = "{{url_for('img.datail',id = id,filename=filename)}}">戻る</a>
 </body>
 </html>

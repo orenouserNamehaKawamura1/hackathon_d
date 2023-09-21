@@ -26,23 +26,13 @@ def list(page_num):
 def datail():
     id = request.args.get('id')
     file = request.args.get('filename','')
-    if file != None:
-        f_name = file.split("/")
-        images_index = f_name.index("imge")
-        filename = "/".join(f_name[images_index:])
-    file_path = url_for('static',filename=filename)
-    return render_template('img/datail.html',filename = file_path,id=id)
+    return render_template('img/datail.html',filename = file,id=id)
 
 @img_list_bp.route('/confirm/', methods=['GET'])
 def confirm():
     id = request.args.get('id')
     file = request.args.get('filename','')
-    if file != None:
-        f_name = file.split("/")
-        images_index = f_name.index("imge")
-        filename = "/".join(f_name[images_index:])
-    file_path = url_for('static',filename=filename)
-    return render_template('img/comfirm.html', filename = file_path,id=id)
+    return render_template('img/comfirm.html', filename = file,id=id)
 
 
 @img_list_bp.route('/delete/<int:id>', methods=['POST'])
