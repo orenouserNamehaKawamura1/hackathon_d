@@ -1,16 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+{% extends 'layout.html' %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('user.static' , filename='css/confirm.css')}}">
+{% endblock %}
+{% if err != null %}
+<p style="color:red">{{err}}</p>
+{% endif %}
+
+{% if msg != null %}
+<p style="color:red">{{msg}}</p>
+{% endif %}
+{% block content %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <div class="layout2">
+    <title>削除確認画面</title>
 </head>
 <body>
-    <p>削除しますか?</p>
+    <div class="header1">
+    <h1>削除しますか?</h1>
+    </div>
+    <div class="images">
     <img src="{{url_for('static',filename=filename)}}">
-    <form method = "POST" action =  "{{url_for('img.delete',id = id )}}">
-        <input type="submit" value="削除">
-    </form>
-    <a href = "{{url_for('img.datail',id = id,filename=filename)}}">戻る</a>
+    </div>
+    <br>
+    <button class="button" onclick="location.href='{{url_for('img.datail',id = id,filename=filename)}}'">戻る</button>
+    <button class="button"onclick="location.href='{{url_for('img.delete',id = id )}}'">削除</button>
+
 </body>
-</html>
+    </div>
+{% endblock %}

@@ -42,7 +42,7 @@ def confirm():
     return render_template('img/comfirm.html', filename = file,id=id)
 
 
-@img_list_bp.route('/delete/<int:id>', methods=['POST'])
+@img_list_bp.route('/delete/<int:id>', methods=['GET'])
 def delete(id):
     if is_login() is False:
         return redirect(url_for('login.index'))

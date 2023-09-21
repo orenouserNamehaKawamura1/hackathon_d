@@ -1,13 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'layout.html' %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('user.static' , filename='css/datail.css')}}">
+{% endblock %}
+{% if err != null %}
+<p style="color:red">{{err}}</p>
+{% endif %}
+
+{% if msg != null %}
+<p style="color:red">{{msg}}</p>
+{% endif %}
+
+{% block content %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <div class="layout2">
+    <title>画像詳細</title>
 </head>
 <body>
+    <div class="header1">
+        <h1>画像詳細</h1>
+    </div>
+    <div class="images">
     <img src="{{ url_for('static',filename=filename) }}">
-    <a href = "{{url_for('img.confirm',id = id,filename=filename)}}">削除</a>
-    <a href = "{{url_for('img.list',page_num=1)}}">一覧へ</a>
+    </div>
+    <br>
+    <button class="button" onclick="location.href='{{url_for('img.list',page_num=1)}}'">戻る</button>
+    <button class="button" onclick="location.href='{{url_for('img.confirm',id = id,filename=filename)}}'">削除</button>
+    </div>
 </body>
-</html>
+    </div>
+{% endblock %}
