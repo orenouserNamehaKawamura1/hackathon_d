@@ -120,7 +120,7 @@ def generate():
 
 @user_bp.route('/generate/<id>', methods=['POST'])
 def generate_post(id):
-    if is_login() is False:
+    if id is None:
         return redirect(url_for('login.index'))
     
     file = request.files['xhr2upload']
