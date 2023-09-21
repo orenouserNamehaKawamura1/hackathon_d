@@ -15,7 +15,7 @@ from flask_cors import CORS
 
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"/user/generate": {"origins": "*"}})
+CORS(app, resources={r"/user/generate/*": {"origins": "http://127.0.0.1:5000"}})
 load_dotenv(verbose=True)
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)

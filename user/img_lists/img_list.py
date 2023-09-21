@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template,request,redirect,url_for,session
 import db.list_db
 
 img_list_bp = Blueprint('img', __name__, url_prefix='/img',
@@ -14,7 +14,6 @@ def list(page_num):
     counts = db.list_db.img_count()
     total_pages = int(counts[0]) // per_page + (int(counts[0]) % per_page > 0)
     page = int(counts[0] / per_page + 1)
-
     return render_template(
                             'img/list.html',
                             images=images,
@@ -22,3 +21,34 @@ def list(page_num):
                             page=page,
                             total_pages=total_pages
                             )
+
+@img_list_bp.route('/datial/',methods=['GET'])
+def datail():
+    id = request.args.get('id')
+    file = request.args.get('filename','')
+    if file != None:
+        f_name = file.split("/")
+        images_index = f_name.index("imge")
+        filename = "/".join(f_name[images_index:])
+    file_path = url_for('static',filename=filename)
+    return render_template('img/datail.html',filename = file_path,id=id)
+
+@img_list_bp.route('/confirm/', methods=['GET'])
+def confirm():
+    id = request.args.get('id')
+    file = request.args.get('filename','')
+    if file != None:
+        f_name = file.split("/")
+        images_index = f_name.index("imge")
+        filename = "/".join(f_name[images_index:])
+    file_path = url_for('static',filename=filename)
+    return render_template('img/comfirm.html', filename = file_path,id=id)
+
+
+@img_list_bp.route('/delete/<int:id>', methods=['POST'])
+def delete(id):
+    row = db.list_db.img_delete(id)
+    if row == 1:
+        return redirect(url_for('img.list', page_num=1))
+    else:
+        return redirect(url_for('img.list', page_num=1))
