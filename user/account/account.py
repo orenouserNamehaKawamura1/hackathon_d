@@ -110,6 +110,9 @@ def confirm_email(token):
 
 @user_bp.route('/generate', methods=['GET'])
 def generate():
+    if is_login() is False:
+        return redirect(url_for('login.index'))
+    
     id = session.get('login_ID')
 
     return render_template('generate.html', id = id)
@@ -117,6 +120,9 @@ def generate():
 
 @user_bp.route('/generate/<id>', methods=['POST'])
 def generate_post(id):
+    if is_login() is False:
+        return redirect(url_for('login.index'))
+    
     file = request.files['xhr2upload']
     if file and allowed_file(file.filename):
         filename = file.filename
