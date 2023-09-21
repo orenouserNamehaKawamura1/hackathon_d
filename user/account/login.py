@@ -120,5 +120,5 @@ def pass_change(token):
 
 @login_bp.route('/logout')
 def logout():
-    session.pop('user_name', None)
+    session.clear()
     return redirect(url_for('index'))
