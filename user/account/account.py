@@ -13,6 +13,8 @@ from .AudioToImage import thread_func
 import requests
 from PIL import Image
 from io import BytesIO
+from .login_check import is_login
+
 ALLOWED_EXTENSIONS = set(['mp3', 'wav', 'mp3'])
 
 user_bp = Blueprint('user', __name__, url_prefix='/user',
