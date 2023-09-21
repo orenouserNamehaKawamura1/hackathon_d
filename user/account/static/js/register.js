@@ -12,7 +12,7 @@ $(document).ready(function () {
             $("#password-match").text("");
         } else {
             if (password === confirmPassword) {
-                $("#password-match").text("パスワードが一致しています。");
+                $("#password-match").text("");
                 $submitButton.prop("disabled", false);
             } else {
                 $("#password-match").text("パスワードが一致していません。");

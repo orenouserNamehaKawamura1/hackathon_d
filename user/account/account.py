@@ -96,7 +96,8 @@ def confirm_email(token):
                 err = 'メールアドレスが有効ではありません'
 
     session.pop('token', None)
-
+    session.pop('mail', None)
+    session.pop('pas', None)
     if err:
         return redirect(url_for('user.result', err=err))
     elif msg:

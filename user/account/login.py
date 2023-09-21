@@ -54,7 +54,6 @@ def login_function():
     else:
         msg = "パスワードまたはメールアドレスが違います"
         session['mail'] = mail
-        session['pas'] = pas
         return redirect(url_for('login.index', msg=msg))
 
 

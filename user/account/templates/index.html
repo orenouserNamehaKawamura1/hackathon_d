@@ -19,7 +19,7 @@
     <p>メールアドレス：</p>
       <input type="email" id="mail" name="mail" value="{{session.mail if session.mail is defined else ''}}">
     <p>パスワード：</p>
-    <input type="password" id="password" name="password" value="{{session.pas if session.pas is defined else ''}}"> 
+    <input type="password" id="password" name="password"> 
     </div>
     <button type="submit">ログイン</button>
     <a class="register-link" href="{{url_for('user.register')}}">アカウント登録</a>
